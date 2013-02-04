@@ -1,0 +1,52 @@
+
+
+<html>
+<head><head/>
+<body>
+<input id="numberInputField"/>
+<button type="button" onClick="main()"?/>
+</body>
+</html>
+<script language="JavaScript">
+function main() {
+	max_number = 135000;
+	target_prime = 10001;
+
+	dem_numbers = new Array();
+	for (var i = 2; i < max_number; i++ ) {
+		dem_numbers.push(i);
+	}
+
+	nth_prime = 0;
+	highest_prime = 2;
+
+	while (nth_prime < target_prime && dem_numbers.length != 0) {
+		//if (nth_prime % 10 == 0) {
+		//	checkup(dem_numbers);
+		//}
+		highest_prime = dem_numbers[0];
+		for (var i = 0; i < dem_numbers.length; i++) {	
+			//alert("dem_numbers[" + i + "] = " + dem_numbers[i]);
+			if (dem_numbers[i] % highest_prime == 0) {
+				//alert("deleting " + dem_numbers[i]);
+				dem_numbers.splice(i, 1);
+
+				i--;
+			}
+		}
+		nth_prime++;
+	}
+
+	alert("highest_prime: " + highest_prime);
+	alert("nth_prime: " + nth_prime);
+}
+
+function checkup(dem_numbers) {
+	s = "("
+	for (var i = 0; i < 200 && i < dem_numbers.length; i = i + 10) {
+		s += dem_numbers[i] + ", ";
+	}
+	s += ")";
+	alert("checkup: " + s)
+}
+</script> 

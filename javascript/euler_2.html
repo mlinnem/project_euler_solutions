@@ -1,0 +1,25 @@
+<html>
+<head><head/>
+<body>
+<button type="button" onClick="main()"?/>
+</body>
+</html>
+<script language="JavaScript">
+function main() {
+	fib_prev = 1;
+	fib_current = 2;
+
+	sum = 2;
+
+	while (fib_current < 4000000) {
+	temp = fib_current;
+	fib_current = fib_current + fib_prev
+	fib_prev = temp
+
+	if (fib_current % 2 == 0) {
+		sum += fib_current;
+	}
+	}
+	alert(sum);
+}
+</script>

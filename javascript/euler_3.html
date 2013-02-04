@@ -1,0 +1,22 @@
+<html>
+<head><head/>
+<body>
+<input id="numberInputField"/>
+<button type="button" onClick="main()"?/>
+</body>
+</html>
+<script language="JavaScript">
+function main() {
+	var number = document.getElementById("numberInputField").value;
+	alert(isPalindrome(number));
+}
+
+function isPalindrome(n) {
+	nString = n.toString();
+	firstHalf =  nString.substring(0, Math.ceil(nString.length / 2));
+	secondHalf = nString.substring(Math.floor(nString.length / 2));
+	reverseSecondHalf = secondHalf.split("").reverse().join("");
+	return firstHalf == reverseSecondHalf;
+}
+
+</script>

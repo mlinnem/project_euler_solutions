@@ -1,0 +1,32 @@
+
+
+
+<html>
+<head><head/>
+<body>
+<input id="numberInputField"/>
+<button type="button" onClick="main()"?/>
+</body>
+</html>
+<script language="JavaScript">
+function main() {
+	for (var a = 1; a < 1000; a++) {
+		if (a % 1 == 0) {
+			//alert("a == " + a);
+		}
+		for (var b = a + 1; b < 1000 - a; b++) {
+			c = ((1000 - a) - b);
+			asbs = Math.pow(a, 2) + Math.pow(b, 2);
+					//alert(a * b * c);
+			if (asbs == Math.pow(c, 2)) {
+
+				alert("a:" + a);
+				alert("b:" + b);
+				alert("c:" + c);
+				alert("" + (a * b * c));
+			}
+		}
+	}
+}
+
+</script> 

@@ -1,0 +1,110 @@
+<html>
+<head>
+<script src="js_cols/base.js"></script> 
+
+<head/>
+<body>
+<input id="numberInputField"/>
+<button type="button" onClick="main()"?/>
+</body>
+</html>
+<script language="JavaScript">
+
+js_cols.require('js_cols.LinkedList');
+
+
+function main() {
+
+	primes = generatePrimes_To(100000);
+
+	triangle_number = 0
+	for (var i = 1; num_divisors(triangle_number, primes) <= 500; i++) {
+		triangle_number += i;
+	}
+
+	alert("triangle number " + triangle_number + " has " + num_divisors(triangle_number, primes) + " primes."); 
+}
+
+function num_divisors(triangle_number, primes) {
+	
+	//alert("testing triangle number " + triangle_number);
+
+	primes_it = new js_cols.LinkedList.LinkedListIterator(0, primes);
+
+	
+	prime = 0;
+
+	divisors = 1; //counting one and itself
+
+	orig_triangle_number = triangle_number
+	while (prime <= triangle_number) {
+
+	
+		prime = primes_it.next();
+		//alert("testing prime " + prime + " against triangle number " + triangle_number);
+		n_times = 0;
+		while (triangle_number % prime == 0 && triangle_number >= prime) {
+			n_times = n_times + 1;
+			if (triangle_number == prime) {
+				break;
+			}
+			triangle_number /= prime;
+		}
+
+		divisors = divisors * (n_times + 1)	
+	}
+
+	//alert("it has " + divisors + " divisors");
+	return divisors;
+}
+
+function generatePrimes_To(n) {
+	prime_candidates = generatePrimeCandidates(2, n);
+	primes = new js_cols.LinkedList();
+
+	while (! prime_candidates.isEmpty()) {
+		prime_candidates_it = new js_cols.LinkedList.LinkedListIterator(0, prime_candidates);
+
+		current_prime = prime_candidates_it.next();
+		prime_candidates_it.remove();
+		primes.addLast(current_prime);
+		if (primes.getCount() % 5000 == 0) {
+			//alert(primes.getCount() + " primes!");
+		}
+
+		while (prime_candidates_it.hasNext()) {
+			prime_candidate = prime_candidates_it.next();
+			if (prime_candidate % current_prime == 0) {
+				prime_candidates_it.remove();
+			}
+		}
+	}
+
+	//alert("primes list ready: " + primes.getCount() + " total primes. " + primes.getFirst() + " is first. " + primes.getLast() + " is last.");
+
+	return primes;
+}
+
+function generatePrimeCandidates(a, z) {
+	prime_candidates = new js_cols.LinkedList();
+
+	for (var i = a; i < z; i++ ) {
+		prime_candidates.addLast(i);
+	}
+
+	return prime_candidates;
+}
+
+
+
+function checkup(prime_candidates) {
+	s = "("
+	it = new js_cols.LinkedList.LinkedListIterator(0, prime_candidates);
+	for (var i = 0; i < 20 &&  it.hasNext(); i = i + 1) {
+		num = it.next();
+		s += num + ", ";
+	}
+	s += ")";
+	alert("checkup: " + s)
+}
+</script> 

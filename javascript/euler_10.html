@@ -1,0 +1,140 @@
+
+
+<html>
+<head>
+<script src="js_cols/base.js"></script> 
+
+<head/>
+<body>
+<input id="numberInputField"/>
+<button type="button" onClick="main()"?/>
+</body>
+</html>
+<script language="JavaScript">
+
+js_cols.require('js_cols.LinkedList');
+
+function main() {
+
+	max_prime_candidate = 2000000;
+
+	prime_candidates = new js_cols.LinkedList();
+
+	for (var i = 2; i < max_prime_candidate; i++ ) {
+		prime_candidates.addLast(i);
+	}
+
+	prev_highest_prime = 0;
+	nth_prime_soFar = 0;
+	highest_prime_soFar = 0;
+	sum_of_primes_soFar = 0;
+
+	while (! prime_candidates.isEmpty()) {
+
+		//alert("nth_prime_soFar: " + nth_prime_soFar);
+		//alert("highest_prime_soFar: " + highest_prime_soFar);
+		//checkup(prime_candidates);
+
+		it = new js_cols.LinkedList.LinkedListIterator(0, prime_candidates);
+
+		prev_highest_prime = highest_prime_soFar;
+		highest_prime_soFar = it.next();
+
+
+		if (prev_highest_prime == highest_prime_soFar) {
+			break;
+		}
+
+
+		sum_of_primes_soFar += highest_prime_soFar;
+		//alert("sum_of_primes_soFar: " + sum_of_primes_soFar);
+		
+		num = highest_prime_soFar;
+
+		if (num > 20 && num < 40) {
+			alert("highest_prime_soFar: " + num);
+		}
+
+		if (num > 250 && num < 280) {
+			alert("highest_prime_soFar: " + num);
+		}
+
+		if (num > 1000 && num < 1050) {
+			alert("highest_prime_soFar: " + num);
+		}
+
+		// if (num > 9000 && num < 9030) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 27000 && num < 27030) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 120000 && num < 120070) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 270000 && num < 270040) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 380000 && num < 380060) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 480000 && num < 480060) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 620000 && num < 620090) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 870000 && num < 870040) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 940000 && num < 940100) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 1270000 && num < 1270040) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 1380000 && num < 1380060) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 1480000 && num < 1480060) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 1620000 && num < 1620090) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 1870000 && num < 1870040) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+		// if (num > 1940000 && num < 1940100) {
+		// 	alert("highest_prime_soFar: " + num);
+		// }
+
+		while (it.hasNext()) {
+			if (num % highest_prime_soFar == 0) {
+				it.remove();
+			}
+			num = it.next();
+		}
+
+		if (num % highest_prime_soFar == 0) {
+			it.remove();
+		}
+
+		nth_prime_soFar++;
+	}
+
+	alert("highest_prime_soFar: " + highest_prime_soFar);
+	alert("nth_prime_soFar: " + nth_prime_soFar);
+	alert("sum_of_primes_soFar: " + sum_of_primes_soFar);
+}
+
+function checkup(prime_candidates) {
+	s = "("
+	it = new js_cols.LinkedList.LinkedListIterator(0, prime_candidates);
+	for (var i = 0; i < 20 &&  it.hasNext(); i = i + 1) {
+		num = it.next();
+		s += num + ", ";
+	}
+	s += ")";
+}
+</script> 
